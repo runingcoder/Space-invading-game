@@ -1,5 +1,5 @@
 import pygame
-
+import sys
 import random
 import math
 from pygame import mixer
@@ -114,6 +114,11 @@ while running:
         # RGB Values in screen.fill(r,g,b)
         # control the keyboard strokes being left or right
         if event.type == pygame.KEYDOWN:
+
+            if event.key == pygame.K_ESCAPE:
+                pygame.quit()
+                sys.exit()
+
             if event.key == pygame.K_LEFT:
                 playerX_change = -2
 
