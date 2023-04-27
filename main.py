@@ -11,16 +11,16 @@ pygame.init()
 screen = pygame.display.set_mode((800, 600))
 
 # background
-background = pygame.image.load('backg.jpg')
+background = pygame.image.load('images/backg.jpg')
 
 # background sound
 
-mixer.music.load("background.wav")
+mixer.music.load("audio/background.wav")
 mixer.music.play(-1)
 
 # Title and icon
 pygame.display.set_caption("Space invaders")
-icon = pygame.image.load('ufo (1).png')
+icon = pygame.image.load('images/ufo (1).png')
 pygame.display.set_icon(icon)
 
 
@@ -51,14 +51,14 @@ enemyX_change = []
 enemyY_change = []
 noe = 6
 for i in range(noe):
-    enemyImg.append(pygame.image.load('rs.png'))
+    enemyImg.append(pygame.image.load('images/rs.png'))
     enemyX.append(random.randint(0, 800))
     enemyY.append(random.randint(50, 150))
     enemyX_change.append(1)
     enemyY_change.append(30)
 
 # player
-playerImg = pygame.image.load('si.png')
+playerImg = pygame.image.load('images/si.png')
 playerX = 370
 playerY = 540
 playerX_change = 0
@@ -66,19 +66,19 @@ playerY_change = 0
 
 # score
 score_value = 0
-font = pygame.font.Font("dak.otf", 64)
+font = pygame.font.Font("font/dak.otf", 64)
 
 textX = 10
 textY = 10
 
 # game over text
 
-over_font = pygame.font.Font("dak.otf", 128)
+over_font = pygame.font.Font("font/dak.otf", 128)
 
 # bullet
 # ready= cant see the bullet in the screen
 # fire= its currently moving
-bulletImg = pygame.image.load('bullet.png')
+bulletImg = pygame.image.load('images/bullet.png')
 bulletX = 0
 bulletY = 480
 bulletX_change = 0
@@ -126,7 +126,7 @@ while running:
                 playerY_change = +2
             if event.key == pygame.K_SPACE:
                 if bullet_state == "ready":
-                    pygame.mixer.music.load('laser.wav')
+                    pygame.mixer.music.load('audio/laser.wav')
                     pygame.mixer.music.play()
                     bulletX = playerX
                     fire_bullet(bulletX, bulletY)
@@ -172,7 +172,7 @@ while running:
         # collision detection
         collision = iscollision(enemyX[i], enemyY[i], bulletX, bulletY)
         if collision:
-            collision_sound = mixer.Sound("explosion.wav")
+            collision_sound = mixer.Sound("audio/explosion.wav")
             collision_sound.play()
 
             bulletY = 480
